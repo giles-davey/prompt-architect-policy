@@ -14,3 +14,5 @@ By using this GPT, you acknowledge that:
 This statement is provided for informational purposes only and does not constitute a binding agreement, warranty, or guarantee by the App creator. The creator is **not responsible** for any misuse, unauthorized access, or handling of data by third parties, including OpenAI.
 
 OpenAI's data handling practices — including logging of user interactions — are described in their official policies linked above.
+
+Promp Architect URL - https://chatgpt.com/g/g-688cdd8dd15881919c6d6936ea879b72-prompt-architect-build-fix-and-refine

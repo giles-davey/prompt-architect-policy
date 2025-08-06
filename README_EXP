@@ -1,0 +1,120 @@
+# EXP Candidate Evaluator (Private GPT App)
+
+This is a private GPT App designed to evaluate anonymized resume text against embedded job description (JD) expectations and leveling criteria for full-stack software engineers. It helps identify candidates who meet the L4–L6 bar for 50/50 frontend/backend generalist roles in product engineering.
+
+---
+
+## 🔍 What It Does
+
+- Accepts **anonymized resume text** (no PII)
+- Optionally accepts:
+  - `jobDescription` (overrides embedded JD expectations)
+  - `interviewNotes` (adds additional evaluation context)
+- Evaluates against:
+  - Embedded JD expectations
+  - Embedded L3–L6 leveling rubric
+- Scores the candidate **out of 100**
+- Returns:
+  - **Structured review + level recommendation** (L4, L5, L6) if score ≥ 75
+  - **Brief rejection reason** if score < 75
+
+---
+
+## 🧠 Target Profile
+
+The app is designed to identify **mid-to-senior product engineers** who:
+
+- Can operate at the **L4–L6 level**
+- Work as **50/50 full-stack generalists** (FE + BE)
+- Demonstrate ownership, impact, and architectural thinking
+
+---
+
+## 📥 Input Schema
+
+```json
+{
+  "resumeText": "string — REQUIRED",
+  "jobDescription": "string — optional",
+  "interviewNotes": "string — optional"
+}
+```
+
+---
+
+## ✅ Output Format (Score ≥ 75)
+
+```md
+Score: 85 / 100  
+Level Recommendation: L5
+
+Summary
+Project Experience
+Tech Stack Alignment
+Why are you looking for a new role/Why Asana
+Team interest/pillar
+Interview Status
+In-office/hybrid
+
+AI Use
+
+Private Notes:
+Comp:
+Sponsorship:
+
+JD Alignment:
+✓ Strong coding proficiency in Java/Python  
+✓ React frontend experience  
+✓ Built backend APIs with infra ownership  
+✓ Led projects with product/design  
+✗ Minimal measurable impact shown  
+```
+
+---
+
+## ❌ Output Format (Score < 75)
+
+```md
+Score: 63 / 100
+
+Summary: Candidate lacks meaningful backend experience and ownership. Most work appears isolated to UI feature delivery. Does not meet L4 generalist bar.
+```
+
+---
+
+## 🧱 Embedded JD Expectations
+
+Used for every evaluation unless a `jobDescription` is provided:
+1. Strong coding proficiency (JavaScript, Python, Java, Go, etc.)
+2. Frontend experience (React or similar)
+3. Backend experience (APIs, infra, services, etc.)
+4. Ownership of technical projects
+5. Product or business impact
+6. Cross-functional collaboration
+
+---
+
+## 🧭 Leveling Rubric
+
+Used internally to assign L3–L6 recommendations:
+- **L6**: Principal-level scope, autonomy, and cross-org impact
+- **L5**: Senior engineer with team-level leadership, mentorship, and tech depth
+- **L4**: Mid-level IC with solid coding and feature ownership
+- **L3 or below**: Entry-level signals; needs significant guidance
+
+---
+
+## 🛠 How to Use (GPT Builder)
+
+1. Go to [https://chat.openai.com/gpts](https://chat.openai.com/gpts)
+2. Upload `schema.json` (this repo)
+3. Paste `system.txt` into the Instructions field
+4. Test by pasting in anonymized resume text
+5. (Optional) Add JD or interview context for richer evaluation
+
+---
+
+## 🧑‍💼 Author
+
+Private evaluator GPT built and maintained by [Your Name or Handle]  
+Built for internal use — **not for public release**
